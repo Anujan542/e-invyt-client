@@ -93,7 +93,7 @@ export const TemplateFinal = ({
             position: 'top-right',
           }
         );
-        navigate('/template-selection');
+        setCurrentStep(1);
       } catch (err: any) {
         console.error('Payment initiation failed', err);
         toast.error(err?.response?.data?.message || 'Something went wrong');
@@ -112,7 +112,7 @@ export const TemplateFinal = ({
         duration: 4000,
         position: 'top-right',
       });
-      navigate('/template-selection');
+      setCurrentStep(1);
     },
     onError: (err: any) => {
       toast.error(err?.response?.data?.message || 'Failed to update draft');
@@ -177,7 +177,9 @@ export const TemplateFinal = ({
     }
   };
 
-  const isLoading = customizationTemplateMutation.isPending || payHereMutation.isPending;
+  const isLoading = customizationTemplateMutation.isPending;
+  const isLoadingDraft =
+    updateDraftMutation.isPending || customizationDraftTemplateMutation.isPending;
 
   return (
     <>
@@ -232,9 +234,9 @@ export const TemplateFinal = ({
                 });
               }}
             >
-              Save Draft
-              {/* {isLoading && <Loader2 className="animate-spin h-4 w-4" />}
-              {isLoading ? '' : 'Save Draft'} */}
+              {/* Save Draft */}
+              {isLoadingDraft && <Loader2 className="animate-spin h-4 w-4" />}
+              {isLoadingDraft ? '' : 'Save Draft'}
             </Button>
             <Button className="cursor-pointer" size="lg" onClick={handleDownload}>
               {isLoading && <Loader2 className="animate-spin h-4 w-4" />}

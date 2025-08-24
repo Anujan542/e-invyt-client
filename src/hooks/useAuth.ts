@@ -1,4 +1,4 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import {
   login,
   signup,
@@ -12,23 +12,35 @@ import { useAuthStore } from '@/store/useAuthStore';
 
 export const useAuth = () => {
   const { setUser } = useAuthStore();
-  const queryClient = useQueryClient();
+  // const queryClient = useQueryClient();
 
   const signupMutation = useMutation({
     mutationFn: signup,
-    onSuccess: (res) => setUser(res.data.user),
+    onSuccess: (res) => {
+      const { user, token } = res.data;
+      if (token) {
+        localStorage.setItem('token', token); // save JWT
+      }
+      setUser(user);
+    },
   });
 
   const loginMutation = useMutation({
     mutationFn: login,
-    onSuccess: (res) => setUser(res.data.user),
+    onSuccess: (res) => {
+      const { user, token } = res.data;
+      if (token) {
+        localStorage.setItem('token', token);
+      }
+      setUser(user);
+    },
   });
 
   const checkAuthQuery = useQuery({
     queryKey: ['auth'],
     queryFn: async () => {
       const res = await checkAuth();
-      setUser(res.data.message); // <-- set the user from `checkAuth`
+      setUser(res.data.message); // <-- backend sends user here
       return res.data.message;
     },
     retry: false,
@@ -38,8 +50,11 @@ export const useAuth = () => {
   const logoutMutation = useMutation({
     mutationFn: logout,
     onSuccess: () => {
-      setUser(null);
-      queryClient.removeQueries({ queryKey: ['auth'] });
+      localStorage.removeItem('token');
+      // optionally clear user in store
+      useAuthStore.getState().setUser(null);
+      // setUser(null);
+      // queryClient.removeQueries({ queryKey: ['auth'] });
     },
   });
 
