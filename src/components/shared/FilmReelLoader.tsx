@@ -1,5 +1,3 @@
-import React from "react";
-
 export function FilmReelLoader({ size = 160 }: { size?: number }) {
   return (
     <div style={{ width: size, height: size }} className="mx-auto text-blue-500 dark:text-blue-400">
@@ -18,19 +16,58 @@ export function FilmReelLoader({ size = 160 }: { size?: number }) {
         </defs>
 
         {/* outer rounded frame */}
-        <rect x="8" y="23" width="104" height="74" rx="10" fill="rgba(255,255,255,0.04)" stroke="currentColor" strokeOpacity="0.15" />
+        <rect
+          x="8"
+          y="23"
+          width="104"
+          height="74"
+          rx="10"
+          fill="rgba(255,255,255,0.04)"
+          stroke="currentColor"
+          strokeOpacity="0.15"
+        />
 
         {/* perforations (left) */}
         {Array.from({ length: 4 }).map((_, i) => (
-          <rect key={i} x={14} y={32 + i * 14} width="6" height="8" rx="1" fill="currentColor" opacity="0.15">
-            <animate attributeName="opacity" values="0.15;0.5;0.15" dur="2s" begin={`${i * 0.2}s`} repeatCount="indefinite" />
+          <rect
+            key={i}
+            x={14}
+            y={32 + i * 14}
+            width="6"
+            height="8"
+            rx="1"
+            fill="currentColor"
+            opacity="0.15"
+          >
+            <animate
+              attributeName="opacity"
+              values="0.15;0.5;0.15"
+              dur="2s"
+              begin={`${i * 0.2}s`}
+              repeatCount="indefinite"
+            />
           </rect>
         ))}
 
         {/* perforations (right) */}
         {Array.from({ length: 4 }).map((_, i) => (
-          <rect key={i} x={100} y={32 + i * 14} width="6" height="8" rx="1" fill="currentColor" opacity="0.15">
-            <animate attributeName="opacity" values="0.15;0.5;0.15" dur="2s" begin={`${0.4 + i * 0.2}s`} repeatCount="indefinite" />
+          <rect
+            key={i}
+            x={100}
+            y={32 + i * 14}
+            width="6"
+            height="8"
+            rx="1"
+            fill="currentColor"
+            opacity="0.15"
+          >
+            <animate
+              attributeName="opacity"
+              values="0.15;0.5;0.15"
+              dur="2s"
+              begin={`${0.4 + i * 0.2}s`}
+              repeatCount="indefinite"
+            />
           </rect>
         ))}
 
@@ -38,7 +75,16 @@ export function FilmReelLoader({ size = 160 }: { size?: number }) {
         <g clipPath="url(#filmClip)">
           <g className="film-frames">
             {Array.from({ length: 10 }).map((_, i) => (
-              <rect key={i} x={10 + i * 22} y={30} width="18" height="62" rx="4" fill="currentColor" opacity="0.08" />
+              <rect
+                key={i}
+                x={10 + i * 22}
+                y={30}
+                width="18"
+                height="62"
+                rx="4"
+                fill="currentColor"
+                opacity="0.08"
+              />
             ))}
           </g>
           {/* shine sweep */}

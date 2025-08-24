@@ -1,10 +1,5 @@
-import { ReactNode } from "react";
-import {
-  AbsoluteFill,
-  interpolate,
-  useCurrentFrame,
-  useVideoConfig,
-} from "remotion";
+import type { ReactNode } from 'react';
+import { AbsoluteFill, interpolate, useCurrentFrame, useVideoConfig } from 'remotion';
 
 type WhiteFadeProps = {
   type: string;
@@ -12,37 +7,28 @@ type WhiteFadeProps = {
   children: ReactNode;
 };
 
-export const WhiteFadeTransition = ({
-  type,
-  duration,
-  children,
-}: WhiteFadeProps) => {
+export const WhiteFadeTransition = ({ type, duration, children }: WhiteFadeProps) => {
   const frame = useCurrentFrame();
   const videoConfig = useVideoConfig();
 
   const firstFrame = videoConfig.durationInFrames - duration;
 
   const progress =
-    type === "in"
+    type === 'in'
       ? interpolate(frame, [-10, duration], [0, 100], {
-          extrapolateRight: "clamp",
-          extrapolateLeft: "clamp",
+          extrapolateRight: 'clamp',
+          extrapolateLeft: 'clamp',
         })
-      : interpolate(
-          frame,
-          [firstFrame, videoConfig.durationInFrames - 1],
-          [1, 0],
-          {
-            extrapolateLeft: "clamp",
-            extrapolateRight: "clamp",
-          },
-        );
+      : interpolate(frame, [firstFrame, videoConfig.durationInFrames - 1], [1, 0], {
+          extrapolateLeft: 'clamp',
+          extrapolateRight: 'clamp',
+        });
 
   return (
     <AbsoluteFill
       style={{
         opacity: progress,
-        background: "white",
+        background: 'white',
       }}
     >
       {children}

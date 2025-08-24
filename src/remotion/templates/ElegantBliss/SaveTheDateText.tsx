@@ -40,16 +40,16 @@ const poppingOpacity = interpolate(pop, [0, 1], [0, 1]);
     <>
       <div
         style={{
-        fontWeight: 'bold',
-        fontSize: '4rem',
-        color: color,
-        textTransform: 'uppercase',
-        marginBottom: '10rem',
-        transform: `scale(${pop})`,
-        opacity: poppingOpacity,
-      }}
+          fontWeight: 'bold',
+          fontSize: '4rem',
+          color: color,
+          textTransform: 'uppercase',
+          marginBottom: '10rem',
+          transform: `scale(${pop})`,
+          opacity: poppingOpacity,
+        }}
       >
-       <AnimatedEventDate text={eventDate} color={color} />
+        <AnimatedEventDate text={eventDate!} color={color} />
 
         {/* {eventDate} */}
       </div>
