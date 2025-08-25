@@ -32,6 +32,7 @@ const HinduWedding = ({
             width: '100%',
             height: 'auto',
           }}
+          pauseWhenBuffering
         />
         <Sequence from={180}>
           <WelcomeMessage welcomeMessage={welcomeMessage} color={color} />
@@ -48,6 +49,7 @@ const HinduWedding = ({
               width: '100%',
               height: 'auto',
             }}
+            pauseWhenBuffering
           />
           <FadeInOut inDuration={5} outDuration={10} totalDuration={140}>
             <WeddingInvite
