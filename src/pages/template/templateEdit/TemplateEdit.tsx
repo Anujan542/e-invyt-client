@@ -6,11 +6,11 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
-import { Player } from '@remotion/player';
+import { Player, type RenderPoster } from '@remotion/player';
 import { Input } from '@/components/ui/input';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import Sketch from '@uiw/react-color-sketch';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { format } from 'date-fns';
 import { DynamicIcon } from 'lucide-react/dynamic';
 import { Label } from '@/components/ui/label';
@@ -26,7 +26,8 @@ import {
 } from '@/components/ui/select';
 import type { TemplateEditProps, WeddingDetails } from './TemplateEdit.types';
 import { templateMap } from '@/remotion/Templates';
-import { LoaderIcon } from 'lucide-react';
+import { Loader2, LoaderIcon } from 'lucide-react';
+import { AbsoluteFill } from 'remotion';
 
 export const TemplateEdit = ({
   currentStep,
@@ -126,6 +127,18 @@ export const TemplateEdit = ({
     throw new Error(`Unknown template name: ${name}`);
   }
 
+  const renderPoster: RenderPoster = useCallback(({ isBuffering }) => {
+    if (isBuffering) {
+      return (
+        <AbsoluteFill style={{ justifyContent: 'center', alignItems: 'center' }}>
+          <Loader2 className="animate-spin h-4 w-4" />
+        </AbsoluteFill>
+      );
+    }
+
+    return null;
+  }, []);
+
   return (
     <>
       <section className="bg-muted dark:bg-background py-5">
@@ -159,6 +172,10 @@ export const TemplateEdit = ({
                     color: templateColor,
                     audio: audioUrl,
                   }}
+                  renderPoster={renderPoster}
+                  showPosterWhenEnded
+                  showPosterWhenPaused
+                  showPosterWhenBuffering
                 />
               </div>
             </div>

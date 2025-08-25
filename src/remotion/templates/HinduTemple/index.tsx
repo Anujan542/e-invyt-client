@@ -22,7 +22,7 @@ const HinduWedding = ({
 }: WeddingProps) => {
   return (
     <AbsoluteFill style={{ fontFamily: 'Georgia, serif' }}>
-      <Audio src={`${audio}`} />
+      <Audio pauseWhenBuffering src={`${audio}`} />
       <Sequence durationInFrames={300}>
         <OffthreadVideo
           src={Temple}
