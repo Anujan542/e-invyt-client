@@ -22,7 +22,7 @@ const HinduWedding = ({
 }: WeddingProps) => {
   return (
     <AbsoluteFill style={{ fontFamily: 'Georgia, serif' }}>
-      <Audio src={`${audio}`}  />
+      <Audio src={`${audio}`} />
       <Sequence durationInFrames={300}>
         <OffthreadVideo
           src={Temple}
@@ -38,7 +38,7 @@ const HinduWedding = ({
         </Sequence>
       </Sequence>
 
-      <Sequence from={290}>
+      <Sequence premountFor={100} from={290}>
         <FadeInOut inDuration={5} outDuration={30} totalDuration={300}>
           <OffthreadVideo
             src={End}
