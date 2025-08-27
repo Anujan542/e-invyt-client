@@ -11,5 +11,5 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
-  base: process.env.VITE_BASE_PATH || '/e-invyt-client',
+  base: process.env.VITE_BASE_PATH || '/',
 });
