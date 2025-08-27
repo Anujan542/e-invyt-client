@@ -20,7 +20,7 @@ const CinematicLove = ({
 }: WeddingProps) => {
   return (
     <AbsoluteFill style={{ fontFamily: 'Georgia, serif' }}>
-      <Audio src={`${audio}`} />
+      <Audio pauseWhenBuffering src={`${audio}`} />
       <Sequence durationInFrames={300}>
         <OffthreadVideo
           src={Cinematic}
@@ -30,6 +30,7 @@ const CinematicLove = ({
             width: '100%',
             height: 'auto',
           }}
+          pauseWhenBuffering
           startFrom={60}
         />
         <div
@@ -44,7 +45,7 @@ const CinematicLove = ({
         ></div>
       </Sequence>
 
-      <Sequence from={180} durationInFrames={195}>
+      <Sequence premountFor={100} from={180} durationInFrames={195}>
         <FadeInOut inDuration={15} outDuration={15} totalDuration={195}>
           <OffthreadVideo
             src={Background}
@@ -54,6 +55,7 @@ const CinematicLove = ({
               width: '100%',
               height: 'auto',
             }}
+            pauseWhenBuffering
           />
 
           <WeddingInvite
@@ -69,7 +71,7 @@ const CinematicLove = ({
         </FadeInOut>
       </Sequence>
 
-      <Sequence from={375} durationInFrames={200}>
+      <Sequence premountFor={100} from={375} durationInFrames={200}>
         <FadeInOut inDuration={15} outDuration={10} totalDuration={179}>
           <OffthreadVideo
             src={Background}
@@ -79,6 +81,7 @@ const CinematicLove = ({
               width: '100%',
               height: 'auto',
             }}
+            pauseWhenBuffering
           />
           <AbsoluteFill
             style={{

@@ -20,7 +20,7 @@ const Beach = ({
 }: WeddingProps) => {
   return (
     <AbsoluteFill style={{ fontFamily: 'Georgia, serif' }}>
-      <Audio src={`${audio}`} startFrom={0} />
+      <Audio pauseWhenBuffering src={`${audio}`} startFrom={0} />
       <Sequence durationInFrames={240}>
         <OffthreadVideo
           src={beach}
@@ -30,6 +30,7 @@ const Beach = ({
             width: '100%',
             height: 'auto',
           }}
+          pauseWhenBuffering
         />
         <Sequence from={0} durationInFrames={100}>
           <FadeInOut inDuration={5} outDuration={10} totalDuration={100}>
@@ -40,7 +41,7 @@ const Beach = ({
           <WelcomeMessage welcomeMessage={welcomeMessage} color={color} />
         </Sequence>
       </Sequence>
-      <Sequence from={230} durationInFrames={460}>
+      <Sequence premountFor={100} from={230} durationInFrames={460}>
         <FadeInOut inDuration={5} outDuration={10} totalDuration={460}>
           <OffthreadVideo
             src={beach}
@@ -50,6 +51,7 @@ const Beach = ({
               width: '100%',
               height: 'auto',
             }}
+            pauseWhenBuffering
           />
 
           <Main
@@ -65,7 +67,7 @@ const Beach = ({
         </FadeInOut>
       </Sequence>
 
-      <Sequence from={450} durationInFrames={150}>
+      <Sequence premountFor={100} from={450} durationInFrames={150}>
         <FadeInOut inDuration={15} outDuration={10} totalDuration={179}>
           <OffthreadVideo
             src={beach}
@@ -75,6 +77,7 @@ const Beach = ({
               width: '100%',
               height: 'auto',
             }}
+            pauseWhenBuffering
           />
           <AbsoluteFill
             style={{
