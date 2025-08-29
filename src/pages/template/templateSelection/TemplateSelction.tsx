@@ -133,7 +133,7 @@ export const TemplateSelction = ({
           </div>
         </div>
       )}
-      <div className="flex justify-center space-x-4">
+      <div className="flex justify-center space-x-4 py-4">
         <Button
           variant="outline"
           className="w-32 cursor-pointer"

@@ -20,7 +20,8 @@ export const HeroSection = () => {
                 transition={{ duration: 0.8, ease: 'easeOut' }}
                 className="mt-8 text-6xl font-semibold md:text-6xl xl:text-6xl xl:[line-height:1.125]"
               >
-                Craft Beautiful <br /> Invitations in Minutes
+                Craft <span className="text-yellow-400">Beautiful</span> <br /> Invitations in
+                Minutes
               </motion.h4>
 
               {/* Paragraph Animation */}
@@ -49,21 +50,25 @@ export const HeroSection = () => {
                   icon={ArrowRightIcon}
                   iconPlacement="right"
                 >
-                  <span className="text-nowrap">Create E-Invyt</span>
+                  <span className="text-nowrap">Let's Start</span>
                 </Button>
               </motion.div>
             </div>
 
             {/* Background video */}
-            <div className="absolute inset-0 -z-10 overflow-hidden rounded-3xl border border-black/10 lg:rounded-[3rem] dark:border-white/5">
+            <div className="absolute inset-0 -z-10 overflow-hidden rounded-3xl border border-black/10 lg:rounded-[3rem] dark:border-white/5 shadow-xl shadow-black/20">
+              {/* Video */}
               <video
                 autoPlay
                 loop
                 muted
                 playsInline
-                className="size-full object-cover opacity-50 invert dark:opacity-35 dark:invert-0 dark:lg:opacity-75"
+                className="w-full h-full object-cover opacity-35 dark:opacity-60 rounded-3xl lg:rounded-[3rem]"
                 src={dnaVideo}
-              ></video>
+              />
+
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 rounded-3xl lg:rounded-[3rem] bg-gradient-to-b from-black/25 via-black/10 to-black/25 dark:from-black/40 dark:via-transparent dark:to-black/40 pointer-events-none" />
             </div>
           </div>
         </section>

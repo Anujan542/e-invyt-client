@@ -20,7 +20,7 @@ const MughalDreams = ({
 }: WeddingProps) => {
   return (
     <AbsoluteFill style={{ fontFamily: 'Georgia, serif' }}>
-      <Audio src={`${audio}`} />
+      <Audio pauseWhenBuffering src={`${audio}`} />
       <Sequence durationInFrames={120}>
         <OffthreadVideo
           src={main}
@@ -30,6 +30,7 @@ const MughalDreams = ({
             width: '100%',
             height: 'auto',
           }}
+          pauseWhenBuffering
         />
         <div
           style={{
@@ -43,7 +44,7 @@ const MughalDreams = ({
         ></div>
       </Sequence>
 
-      <Sequence from={115} durationInFrames={200}>
+      <Sequence premountFor={100} from={115} durationInFrames={200}>
         <FadeInOut inDuration={1} outDuration={15} totalDuration={195}>
           <OffthreadVideo
             src={Background}
@@ -53,6 +54,7 @@ const MughalDreams = ({
               width: '100%',
               height: 'auto',
             }}
+            pauseWhenBuffering
           />
 
           <WeddingInvite
@@ -68,7 +70,7 @@ const MughalDreams = ({
         </FadeInOut>
       </Sequence>
 
-      <Sequence from={315} durationInFrames={200}>
+      <Sequence premountFor={100} from={315} durationInFrames={200}>
         <FadeInOut inDuration={15} outDuration={10} totalDuration={179}>
           <OffthreadVideo
             src={Background}
@@ -78,6 +80,7 @@ const MughalDreams = ({
               width: '100%',
               height: 'auto',
             }}
+            pauseWhenBuffering
           />
           <AbsoluteFill
             style={{

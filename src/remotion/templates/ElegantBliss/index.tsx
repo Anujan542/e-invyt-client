@@ -18,7 +18,7 @@ const EligantBliss = ({
 }: WeddingProps) => {
   return (
     <AbsoluteFill style={{ fontFamily: 'Georgia, serif' }}>
-      <Audio src={`${audio}`} />
+      <Audio pauseWhenBuffering src={`${audio}`} />
       <Sequence durationInFrames={300}>
         <OffthreadVideo
           src={Eligant}
@@ -28,6 +28,7 @@ const EligantBliss = ({
             width: '100%',
             height: 'auto',
           }}
+          pauseWhenBuffering
         />
 
         <WeddingInvite
@@ -42,7 +43,7 @@ const EligantBliss = ({
         />
       </Sequence>
 
-      <Sequence from={200} durationInFrames={195}>
+      <Sequence premountFor={100} from={200} durationInFrames={195}>
         <FadeInOut inDuration={15} outDuration={10} totalDuration={179}>
           <OffthreadVideo
             src={Eligant}
@@ -52,6 +53,7 @@ const EligantBliss = ({
               width: '100%',
               height: 'auto',
             }}
+            pauseWhenBuffering
           />
           <AbsoluteFill
             style={{

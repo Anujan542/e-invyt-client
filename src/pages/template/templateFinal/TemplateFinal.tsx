@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button } from '@/components/ui/button';
 import type { TemplateFinalProps } from './TemplateFinal.types';
-import { Player } from '@remotion/player';
+import { Player, type RenderPoster } from '@remotion/player';
 import { useAuthStore } from '@/store/useAuthStore';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
@@ -10,6 +10,8 @@ import toast from 'react-hot-toast';
 import type { customizationTemplateDetails } from '@/api/template.types';
 import { Loader2 } from 'lucide-react';
 import { templateMap } from '@/remotion/Templates';
+import { useCallback } from 'react';
+import { AbsoluteFill } from 'remotion';
 
 export const TemplateFinal = ({
   currentStep,
@@ -44,6 +46,18 @@ export const TemplateFinal = ({
   const payHereMutation = useMutation({
     mutationFn: payHere,
   });
+
+  const renderPoster: RenderPoster = useCallback(({ isBuffering }) => {
+    if (isBuffering) {
+      return (
+        <AbsoluteFill style={{ justifyContent: 'center', alignItems: 'center' }}>
+          <Loader2 className="animate-spin h-4 w-4" />
+        </AbsoluteFill>
+      );
+    }
+
+    return null;
+  }, []);
 
   const customizationTemplateMutation = useMutation({
     mutationFn: customizationTemplate,
@@ -211,6 +225,10 @@ export const TemplateFinal = ({
               color: templateColor,
               audio: audioUrl,
             }}
+            renderPoster={renderPoster}
+            showPosterWhenEnded
+            showPosterWhenPaused
+            showPosterWhenBuffering
           />
           <div className="absolute mt-60 flex items-center justify-center pointer-events-none opacity-70">
             <span className="text-xl md:text-xl lg:text-3xl text-black">E-Invyt Preview</span>

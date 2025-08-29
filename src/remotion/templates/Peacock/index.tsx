@@ -21,7 +21,7 @@ const Peacock = ({
 }: WeddingProps) => {
   return (
     <AbsoluteFill style={{ fontFamily: 'Georgia, serif' }}>
-      <Audio src={`${audio}`} startFrom={0} />
+      <Audio pauseWhenBuffering src={`${audio}`} startFrom={0} />
       <Sequence durationInFrames={400}>
         <img src={cock} alt="template" />
 
@@ -34,6 +34,7 @@ const Peacock = ({
               width: '100%',
               height: 'auto',
             }}
+            pauseWhenBuffering
           />
         </Sequence>
         <Sequence from={0} durationInFrames={400}>
@@ -43,7 +44,7 @@ const Peacock = ({
         </Sequence>
       </Sequence>
 
-      <Sequence from={390} durationInFrames={210}>
+      <Sequence premountFor={100} from={390} durationInFrames={210}>
         <FadeInOut inDuration={5} outDuration={10} totalDuration={460}>
           <OffthreadVideo
             src={NoPeacock}
@@ -53,6 +54,7 @@ const Peacock = ({
               width: '100%',
               height: 'auto',
             }}
+            pauseWhenBuffering
           />
           <FadeInOut inDuration={5} outDuration={10} totalDuration={100}>
             <Main
