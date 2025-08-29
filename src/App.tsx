@@ -19,7 +19,10 @@ import SuccessPayment from './pages/payment/SuccessPayment';
 import OrderContainer from './pages/orders/OrderContainer';
 import AboutUs from './pages/about/About';
 import ContactUs from './pages/about/Contact';
-// import { Footer } from './components/shared/Footer';
+import { Footer } from './components/shared/Footer';
+import { RefundPolicy } from './pages/policies/RefundPolicy';
+import { PrivacyPolicy } from './pages/policies/PrivacyPolicy';
+import { TermsAndConditions } from './pages/policies/TermsAndConditions';
 
 const App = () => {
   const location = useLocation();
@@ -72,6 +75,10 @@ const App = () => {
 
           <Route path="/template-selection" element={<TemplateContainer />} />
 
+          <Route path="/refund-policy" element={<RefundPolicy />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+
           <Route path="/orders" element={<OrderContainer />} />
 
           <Route
@@ -121,7 +128,7 @@ const App = () => {
           <Route path="/payment-success" element={<SuccessPayment />} />
         </Routes>
       </main>
-      {/* <Footer /> */}
+      <Footer />
       <Toaster position="top-center" />
     </div>
   );
