@@ -1,3 +1,4 @@
+import { Loader2 } from 'lucide-react';
 import { UseColumns, type Payment } from './Column';
 import { DataTable } from './data-table';
 import { getOrderDetails } from '@/api/customization';
@@ -15,7 +16,12 @@ const OrderContainer = () => {
     refetchOnWindowFocus: false,
   });
 
-  if (isLoading) return <div>Loading orders...</div>;
+  if (isLoading)
+    return (
+      <div className="col-span-full flex items-center justify-center h-72">
+        <Loader2 className="animate-spin w-10 h-10 text-gray-600" />
+      </div>
+    );
   if (isError) return <div>Failed to load orders.</div>;
 
   return (

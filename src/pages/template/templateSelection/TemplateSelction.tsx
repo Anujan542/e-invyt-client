@@ -57,7 +57,9 @@ export const TemplateSelction = ({
       {/* Template Cards */}
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 place-items-center">
         {isLoading ? (
-          <Loader2 />
+          <div className="col-span-full flex items-center justify-center h-64">
+            <Loader2 className="animate-spin w-10 h-10 text-gray-600" />
+          </div>
         ) : (
           templates?.map((template) => (
             <div

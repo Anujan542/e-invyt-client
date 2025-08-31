@@ -23,6 +23,7 @@ import { Footer } from './components/shared/Footer';
 import { RefundPolicy } from './pages/policies/RefundPolicy';
 import { PrivacyPolicy } from './pages/policies/PrivacyPolicy';
 import { TermsAndConditions } from './pages/policies/TermsAndConditions';
+import { Loader2 } from 'lucide-react';
 
 const App = () => {
   const location = useLocation();
@@ -58,7 +59,13 @@ const App = () => {
     location.pathname !== '/forgot-password' &&
     !isResetPasswordRoute // use matchPath here
   ) {
-    return <div className="flex justify-center items-center h-screen">Loading...</div>;
+    return (
+      <div className="flex justify-center items-center h-screen">
+        {/* <div className="col-span-full flex items-center justify-center h-64"> */}
+        <Loader2 className="animate-spin w-10 h-10 text-gray-600" />
+        {/* </div> */}
+      </div>
+    );
   }
 
   return (
