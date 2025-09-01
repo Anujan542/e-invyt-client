@@ -12,12 +12,18 @@ import { Eye, EyeOff } from 'lucide-react';
 import { useState } from 'react';
 import { PasswordStrengthBar } from './PasswordUi/PasswordStrengthBar';
 import { PasswordHints } from './PasswordUi/PasswordHints';
+import toast from 'react-hot-toast';
 
 const Signup = () => {
   const { signup } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const { mutate: createUser, isPending } = signup;
-  const { register, handleSubmit, watch } = useForm();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
   const navigate = useNavigate();
 
   const password = watch('password') || '';
@@ -29,10 +35,22 @@ const Signup = () => {
           state: { email: data.email },
         });
       },
+      onError: (error: any) => {
+        const backendMessage = error?.response?.data?.message;
+        const fallbackMessage = error?.message || 'Something went wrong';
+
+        // show toast
+        toast.error(backendMessage || fallbackMessage);
+
+        // for debugging
+        console.error('Signup error:', error);
+      },
     });
   };
 
   const passwordStrength = zxcvbn(password).score;
+
+  const blockedDomains = ['yopmail.com', 'mailinator.com', 'tempmail.com'];
 
   return (
     <section className="flex min-h-screen bg-zinc-50 px-4  dark:bg-transparent">
@@ -60,7 +78,23 @@ const Signup = () => {
               <Label htmlFor="email" className="block text-sm">
                 Email Address
               </Label>
-              <Input {...register('email')} type="email" required />
+              <Input
+                {...register('email', {
+                  required: 'Email is required',
+                  pattern: {
+                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                    message: 'Invalid email format',
+                  },
+                  validate: (value) => {
+                    const domain = value.split('@')[1]?.toLowerCase();
+                    return !blockedDomains.includes(domain) || 'Disposable emails are not allowed';
+                  },
+                })}
+                type="email"
+              />
+              {typeof errors.email?.message === 'string' && (
+                <p className="text-red-500 text-xs">{errors.email.message}</p>
+              )}
             </div>
             <div className="space-y-2">
               <Label htmlFor="password">Password</Label>

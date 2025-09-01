@@ -63,7 +63,7 @@ export const HeroSection = () => {
                 loop
                 muted
                 playsInline
-                className="w-full h-full object-cover opacity-35 dark:opacity-60 rounded-3xl lg:rounded-[3rem]"
+                className="w-full h-full object-cover opacity-50  dark:opacity-60 rounded-3xl lg:rounded-[3rem]"
                 src={dnaVideo}
               />
 
