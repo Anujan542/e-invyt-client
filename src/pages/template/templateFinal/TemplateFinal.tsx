@@ -198,7 +198,10 @@ export const TemplateFinal = ({
   return (
     <>
       <div className="mx-auto max-w-7xl px-6 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-20">
-        <div className="w-full md:w-auto flex justify-center">
+        <div
+          className="w-full md:w-auto flex justify-center"
+          onContextMenu={(e) => e.preventDefault()}
+        >
           <Player
             component={SelectedComponent}
             durationInFrames={templateDuration}

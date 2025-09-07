@@ -116,6 +116,7 @@ export const TemplateSelction = ({
           <div
             className="relative max-h-[90vh] w-auto rounded-xl bg-black shadow-lg"
             onClick={(e) => e.stopPropagation()}
+            onContextMenu={(e) => e.preventDefault()}
           >
             <video
               src={modalVideo}
