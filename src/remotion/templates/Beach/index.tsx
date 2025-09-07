@@ -97,7 +97,6 @@ const Beach = ({
           position: 'absolute',
           bottom: 20,
           right: 20,
-          // opacity: 0.3,
           fontSize: 40,
           color: 'white',
           pointerEvents: 'none',

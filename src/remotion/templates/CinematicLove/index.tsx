@@ -96,6 +96,18 @@ const CinematicLove = ({
           </AbsoluteFill>
         </FadeInOut>
       </Sequence>
+      <div
+        style={{
+          position: 'absolute',
+          bottom: 20,
+          right: 20,
+          fontSize: 40,
+          color: 'white',
+          pointerEvents: 'none',
+        }}
+      >
+        © e-invyt.com
+      </div>
     </AbsoluteFill>
   );
 };

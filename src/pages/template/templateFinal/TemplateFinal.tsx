@@ -230,7 +230,13 @@ export const TemplateFinal = ({
             showPosterWhenPaused
             showPosterWhenBuffering
           />
+          <div className="absolute mt-48 flex items-center justify-center pointer-events-none opacity-70">
+            <span className="text-xl md:text-xl lg:text-3xl text-black">E-Invyt Preview</span>
+          </div>
           <div className="absolute mt-60 flex items-center justify-center pointer-events-none opacity-70">
+            <span className="text-xl md:text-xl lg:text-3xl text-black">E-Invyt Preview</span>
+          </div>
+          <div className="absolute mt-72 flex items-center justify-center pointer-events-none opacity-70">
             <span className="text-xl md:text-xl lg:text-3xl text-black">E-Invyt Preview</span>
           </div>
         </div>
@@ -238,7 +244,7 @@ export const TemplateFinal = ({
         <div>
           <div className="flex flex-col gap-6">
             <Button
-              className="w-52 cursor-pointer bg-black dark:bg-white text-white dark:text-black hover:scale-105 hover:bg-amber-50 transition-transform"
+              className="w-52 cursor-pointer hidden bg-black dark:bg-white text-white dark:text-black hover:scale-105 hover:bg-amber-50 transition-transform"
               size="lg"
               onClick={() => {
                 handleSaveDraft({
@@ -256,7 +262,7 @@ export const TemplateFinal = ({
               {isLoadingDraft && <Loader2 className="animate-spin h-4 w-4" />}
               {isLoadingDraft ? '' : 'Save Draft'}
             </Button>
-            <Button className="cursor-pointer" size="lg" onClick={handleDownload}>
+            <Button className="cursor-pointer hidden" size="lg" onClick={handleDownload}>
               {isLoading && <Loader2 className="animate-spin h-4 w-4" />}
               {isLoading ? '' : 'Download'}
             </Button>

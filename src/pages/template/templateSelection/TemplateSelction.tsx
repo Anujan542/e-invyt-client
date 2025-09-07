@@ -1,12 +1,12 @@
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
+// import {
+//   Select,
+//   SelectContent,
+//   SelectGroup,
+//   SelectItem,
+//   SelectLabel,
+//   SelectTrigger,
+//   SelectValue,
+// } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
 import { CheckCircle, Loader2 } from 'lucide-react';
@@ -39,7 +39,7 @@ export const TemplateSelction = ({
     <div className="flex-1 space-y-10">
       {/* Filter Select */}
       <div className="flex items-center justify-center">
-        <Select>
+        {/* <Select>
           <SelectTrigger className="w-[170px]">
             <SelectValue placeholder="Filter Templates" />
           </SelectTrigger>
@@ -51,7 +51,7 @@ export const TemplateSelction = ({
               <SelectItem value="events">Events</SelectItem>
             </SelectGroup>
           </SelectContent>
-        </Select>
+        </Select> */}
       </div>
 
       {/* Template Cards */}
